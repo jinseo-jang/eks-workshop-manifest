@@ -32,6 +32,6 @@ jobs:
       - name: "Sync ArgoCD Application"
         uses: omegion/argocd-app-actions@master
         with:
-          address: "https://ab8aee80cfa7145e5a03ff7ea4cf6a72-239770354.ap-northeast-2.elb.amazonaws.com"
+          address: "ab8aee80cfa7145e5a03ff7ea4cf6a72-239770354.ap-northeast-2.elb.amazonaws.com"
           token: ${{ secrets.ARGOCD_TOKEN }}
           appName: "eksworkshop-cd-pipeline"
