@@ -14,8 +14,9 @@ jobs:
       
       - name: Build Kustomize
         run: |
+          pwd
           mkdir kustomize-build
-          kustomize build ./kustomize/overlays/dev > kustomize-build-output.yaml
+          kustomize build ./kustomize/overlays/dev > ./kustomize-build/kustomize-build-output.yaml
 
       - name: Run Checkov action
         id: checkov
