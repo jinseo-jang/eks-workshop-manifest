@@ -29,14 +29,9 @@ jobs:
           framework: kubernetes
           check: CKV_K8S_17          
 
-      # - name: "Clone reposiory"
-      #   uses: actions/checkout@v2
-      #   with:
-      #     repository: "argoproj/argocd-example-apps.git"
-      #     ref: "master"
-      # - name: "Sync ArgoCD Application"
-      #   uses: omegion/argocd-app-actions@master
-      #   with:
-      #     address: "https://ab8aee80cfa7145e5a03ff7ea4cf6a72-239770354.ap-northeast-2.elb.amazonaws.com"
-      #     token: ${{ secrets.ARGOCD_TOKEN }}
-      #     appName: "frontend-app"
+      - name: "Sync ArgoCD Application"
+        uses: omegion/argocd-app-actions@master
+        with:
+          address: "https://ab8aee80cfa7145e5a03ff7ea4cf6a72-239770354.ap-northeast-2.elb.amazonaws.com"
+          token: ${{ secrets.ARGOCD_TOKEN }}
+          appName: "eksworkshop-cd-pipeline"
