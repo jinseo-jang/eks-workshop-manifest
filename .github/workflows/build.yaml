@@ -17,13 +17,16 @@ jobs:
           pwd
           mkdir kustomize-build
           kustomize build ./kustomize/overlays/dev > ./kustomize-build/kustomize-build-output.yaml
+          ls -rlt
+          cd kustomize-build
+          ls -rlt
 
       - name: Run Checkov action
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
           directory: kustomize/
-          config_file: kustomize-build-output.yaml
+          config_file: kustomize-build/kuskustomize-build-output.yaml
 
       # - name: "Clone reposiory"
       #   uses: actions/checkout@v2
