@@ -1,0 +1,37 @@
+name: "ArgoCD sync"
+on: "push"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout source code
+        uses: actions/checkout@v2
+
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v1
+      
+      - name: Build Kustomize
+        run: |
+          mkdir kustomize-build
+          kustomize build ./kustomize/overlays/dev > kustomize-build-output.yaml
+
+      - name: Run Checkov action
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: kustomize/
+          config_file: kustomize-build-output.yaml
+
+      # - name: "Clone reposiory"
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: "argoproj/argocd-example-apps.git"
+      #     ref: "master"
+      # - name: "Sync ArgoCD Application"
+      #   uses: omegion/argocd-app-actions@master
+      #   with:
+      #     address: "https://ab8aee80cfa7145e5a03ff7ea4cf6a72-239770354.ap-northeast-2.elb.amazonaws.com"
+      #     token: ${{ secrets.ARGOCD_TOKEN }}
+      #     appName: "frontend-app"
