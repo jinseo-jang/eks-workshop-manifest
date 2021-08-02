@@ -29,9 +29,17 @@ jobs:
           framework: kubernetes
           check: CKV_K8S_17          
 
-      - name: "Sync ArgoCD Application"
-        uses: omegion/argocd-app-actions@master
-        with:
-          address: "ab8aee80cfa7145e5a03ff7ea4cf6a72-239770354.ap-northeast-2.elb.amazonaws.com"
-          token: ${{ secrets.ARGOCD_TOKEN }}
-          appName: "eksworkshop-cd-pipeline"
+      - name: Install ArgoCD and execute Sync in ArgoCD
+        run: |
+          curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+          chmod +x /usr/local/bin/argocd
+          arggocd app sync eksworkshop-cd-pipeline --auth-token ${{ secrets.AWS_ACCESS_KEY_ID }}
+          
+
+
+      # - name: "Sync ArgoCD Application"
+      #   uses: omegion/argocd-app-actions@master
+      #   with:
+      #     address: "ab8aee80cfa7145e5a03ff7ea4cf6a72-239770354.ap-northeast-2.elb.amazonaws.com"
+      #     token: ${{ secrets.ARGOCD_TOKEN }}
+      #     appName: "eksworkshop-cd-pipeline"
