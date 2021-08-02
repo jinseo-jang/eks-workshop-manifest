@@ -26,7 +26,8 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           directory: kustomize-build/
-          framework: kubernetes          
+          framework: kubernetes
+          check: CKV_K8S_17          
 
       # - name: "Clone reposiory"
       #   uses: actions/checkout@v2
