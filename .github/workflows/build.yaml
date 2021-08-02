@@ -19,7 +19,7 @@ jobs:
           kustomize build ./kustomize/overlays/dev > ./kustomize-build/kustomize-build-output.yaml
           ls -rlt
           cd kustomize-build
-          ls -rlt
+          cat kustomize-build-output.yaml
 
       - name: Run Checkov action
         id: checkov
