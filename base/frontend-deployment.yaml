@@ -5,7 +5,7 @@ metadata:
   name: demo-frontend
   namespace: default
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: demo-frontend
