@@ -25,7 +25,7 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          directory: kustomize/kustomize-build-output.yaml
+          directory: kustomize-build/kustomize-build-output.yaml
 
       # - name: "Clone reposiory"
       #   uses: actions/checkout@v2
